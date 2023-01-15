@@ -5,10 +5,10 @@ import "./App.css"
 
 function App() {
   return (
-    <div className="App">
+    <div className="Calc">
       <div className="output"></div>
       <div className="numberpad">
-        <button>AC</button>
+        <button className="span-two">AC</button>
         <button>Del</button>
         <OperatorButton operator="÷" />
         <DigitButton digit="1" />
@@ -25,7 +25,7 @@ function App() {
         <OperatorButton operator="-" />
         <DigitButton digit="." />
         <DigitButton digit="0" />
-        <button> = </button>
+        <button className="span-two"> = </button>
       </div>
     </div>
   )

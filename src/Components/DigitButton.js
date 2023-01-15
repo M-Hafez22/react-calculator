@@ -1,13 +1,7 @@
 import React from "react"
 
 function DigitButton({ digit }) {
-    return (
-        <div>
-            <button>
-                {digit}
-            </button>
-        </div>
-    )
+    return <button>{digit}</button>
 }
 
 export default DigitButton

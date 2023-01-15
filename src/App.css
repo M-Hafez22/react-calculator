@@ -1,3 +1,28 @@
-.App {
+.Calc {
   text-align: center;
+}
+
+.numberpad {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: minmax(7rem, auto) repeat(4, 6rem);
+  border-radius: 0 0 20px 20px;
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.Calc > .numberpad > button {
+  cursor: pointer;
+  font-size: 2em;
+  border: 1px solid #fff;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.Calc > .numberpad > button:hover,
+.Calc > .numberpad > button:focus {
+  background-color: rgba(255, 255, 255, 0.9);
 }
