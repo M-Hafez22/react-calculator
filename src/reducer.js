@@ -24,6 +24,41 @@ export const reducer = (state, { type, payload }) => {
                 current: `${state.current || ""}${payload.digit}`,
                 result: null,
             }
+        case ACTIONS.CHOOSE_OPERATOR:
+            if (state.previous == null) {
+                return {
+                    ...state,
+                    operator: payload.operator,
+                    previous: state.current,
+                    current: null,
+                }
+            }
+            if (state.current == null) {
+                return {
+                    ...state,
+                    operator: payload.operator,
+                }
+            }
+            return {
+                ...state,
+                previous: evaluate(state),
+                operator: payload.operator,
+                current: null,
+            }
+        case ACTIONS.EVALUATE:
+            if (
+                state.current == null ||
+                state.previous == null ||
+                state.operator == null
+            )
+                return state
+            return {
+                ...state,
+                current: null,
+                previous: null,
+                operator: null,
+                result: evaluate(state),
+            }
         default:
             return { state }
     }
