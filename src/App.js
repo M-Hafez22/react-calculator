@@ -8,6 +8,8 @@ function App() {
     <div className="App">
       <div className="output"></div>
       <div className="numberpad">
+        <button>AC</button>
+        <button>Del</button>
         <OperatorButton operator="÷" />
         <DigitButton digit="1" />
         <DigitButton digit="2" />
@@ -23,6 +25,7 @@ function App() {
         <OperatorButton operator="-" />
         <DigitButton digit="." />
         <DigitButton digit="0" />
+        <button> = </button>
       </div>
     </div>
   )
