@@ -1,4 +1,4 @@
-import React, { render, screen } from '@testing-library/react';
+import React, { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('Render Calculator Buttons', () => {
@@ -43,5 +43,18 @@ describe('Render Calculator Buttons', () => {
         expect(linkElement).toBeInTheDocument();
       });
     }
+  });
+});
+
+describe('When press', () => {
+  describe('Digit Button', () => {
+    it('should Add the number to the current section in the output', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      fireEvent.click(screen.getByText('1'))
+      expect(current).toHaveTextContent('1')
+      fireEvent.click(screen.getByText('2'))
+      expect(current).toHaveTextContent('12')
+    });
   });
 });

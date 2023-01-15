@@ -8,6 +8,12 @@ export const ACTIONS = {
 
 export const reducer = (state, { type, payload }) => {
     switch (type) {
+        case ACTIONS.ADD_DIGIT:
+            return {
+                ...state,
+                current: `${state.current || ""}${payload.digit}`,
+                result: null,
+            }
         default:
             return { state }
     }
