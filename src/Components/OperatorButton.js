@@ -1,8 +1,13 @@
 import React from 'react'
+import { ACTIONS } from '../reducer'
 
-function OperatorButton({ operator }) {
+function OperatorButton({ operator, dispatch }) {
     return (
-        <button>{operator}</button>
+        <button
+            onClick={() => dispatch({ type: ACTIONS.CHOOSE_OPERATOR, payload: { operator } })}
+
+        >
+            {operator}</button>
     )
 }
 
