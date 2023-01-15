@@ -19,10 +19,7 @@ describe('Render Calculator Buttons', () => {
       addition: '+',
       multiply: '*',
       subtrak: '-',
-      // evaluate: '=',
       digit: '.',
-      // clear: 'AC',
-      // delete: 'Del'
     }
     for (const key in symbols) {
       it(`Renders ${key}: ${symbols[key]} sign`, () => {
@@ -33,4 +30,18 @@ describe('Render Calculator Buttons', () => {
     }
   });
 
+  describe('Renders calculator Controls', () => {
+    const symbols = {
+      evaluate: '=',
+      clear: 'AC',
+      delete: 'Del'
+    }
+    for (const key in symbols) {
+      it(`Renders ${key}: ${symbols[key]} sign`, () => {
+        render(<App />);
+        const linkElement = screen.getByText(symbols[key]);
+        expect(linkElement).toBeInTheDocument();
+      });
+    }
+  });
 });
