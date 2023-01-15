@@ -45,7 +45,7 @@ function App() {
         <OperatorButton operator="-" dispatch={dispatch} />
         <DigitButton digit="." dispatch={dispatch} />
         <DigitButton digit="0" dispatch={dispatch} />
-        <button className="span-two"> = </button>
+        <button className="span-two" onClick={() => dispatch({ type: ACTIONS.EVALUATE })}> = </button>
       </div>
     </div>
   )
