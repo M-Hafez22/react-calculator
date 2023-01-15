@@ -165,5 +165,20 @@ describe('When press', () => {
       fireEvent.click(screen.getByRole('button', { name: '=' }))
       expect(result).toHaveTextContent('6')
     });
+    it('Update the operator if the last input is the operator', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '8' }))
+      expect(current).toHaveTextContent('8')
+      fireEvent.click(screen.getByRole('button', { name: '÷' }))
+      expect(previous).toHaveTextContent('8 ÷')
+      fireEvent.click(screen.getByRole('button', { name: '*' }))
+      expect(previous).toHaveTextContent('8 *')
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent('16')
+    });
   });
 });
