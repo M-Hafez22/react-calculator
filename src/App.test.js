@@ -62,5 +62,18 @@ describe('When press', () => {
       fireEvent.click(screen.getByText('.'))
       expect(current).toHaveTextContent('0.')
     });
+
+    it('Prevent showing multiple "."', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      fireEvent.click(screen.getByRole('button', { name: '.' }))
+      expect(current).toHaveTextContent('0.')
+      fireEvent.click(screen.getByRole('button', { name: '.' }))
+      expect(current).toHaveTextContent('0.')
+      fireEvent.click(screen.getByRole('button', { name: '1' }))
+      expect(current).toHaveTextContent('0.1')
+      fireEvent.click(screen.getByRole('button', { name: '.' }))
+      expect(current).toHaveTextContent('0.1')
+    });
   });
 });
