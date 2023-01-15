@@ -28,3 +28,27 @@ export const reducer = (state, { type, payload }) => {
             return { state }
     }
 }
+
+function evaluate({ current, previous, operator }) {
+    const c = parseFloat(current)
+    const p = parseFloat(previous)
+    if (isNaN(c) || isNaN(p)) return ""
+    let result
+    switch (operator) {
+        case "÷":
+            result = p / c
+            break
+        case "+":
+            result = p + c
+            break
+        case "-":
+            result = p - c
+            break
+        case "*":
+            result = p * c
+            break
+        default:
+            return result
+    }
+    return result.toString()
+}
