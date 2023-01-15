@@ -11,3 +11,23 @@ describe('Render numbers from 1 to 9', () => {
     })
   }
 });
+
+describe('Renders calculator symbol', () => {
+  const symbols = {
+    divide: '÷',
+    addition: '+',
+    multiply: '*',
+    subtrak: '-',
+    evaluate: '=',
+    digit: '.',
+    clear: 'AC',
+    delete: 'Del'
+  }
+  for (const key in symbols) {
+    it(`Renders ${key}: ${symbols[key]} sign`, () => {
+      render(<App />);
+      const linkElement = screen.getByText(symbols[key]);
+      expect(linkElement).toBeInTheDocument();
+    });
+  }
+});
