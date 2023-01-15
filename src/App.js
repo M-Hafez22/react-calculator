@@ -19,7 +19,7 @@ function App() {
         ) : (
           <div>
             <div className="previous" data-testid="previous">
-              {previous}
+              {previous} {operator}
             </div>
             <div className="current" data-testid="current">
               {current}
