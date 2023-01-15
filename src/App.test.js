@@ -137,5 +137,15 @@ describe('When press', () => {
       const result = screen.getByTestId('result')
       expect(result).toHaveTextContent('4')
     });
+    it('Do nothing when no current no pervoius no result', () => {
+      render(<App />);
+      fireEvent.click(screen.getByRole('button', { name: '-' }))
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      const result = screen.queryByTestId('result')
+      expect(result).toBeNull()
+      expect(previous).toHaveTextContent('')
+      expect(current).toHaveTextContent('')
+    });
   });
 });
