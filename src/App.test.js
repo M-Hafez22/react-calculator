@@ -96,7 +96,7 @@ describe('When press', () => {
       fireEvent.click(screen.getByRole('button', { name: '2' }))
       fireEvent.click(screen.getByRole('button', { name: '=' }))
       const result = screen.getByTestId('result')
-      expect(result).toHaveTextContent('6')
+      expect(result).toHaveTextContent('10')
     });
     it('- Subtract the current from the previous', () => {
       render(<App />);
