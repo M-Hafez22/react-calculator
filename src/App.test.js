@@ -75,5 +75,13 @@ describe('When press', () => {
       fireEvent.click(screen.getByRole('button', { name: '.' }))
       expect(current).toHaveTextContent('0.1')
     });
+    it('Prevent showing multiple "0"', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      fireEvent.click(screen.getByRole('button', { name: '0' }))
+      expect(current).toHaveTextContent('0')
+      fireEvent.click(screen.getByRole('button', { name: '0' }))
+      expect(current).toHaveTextContent('0')
+    });
   });
 });
