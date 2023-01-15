@@ -84,4 +84,58 @@ describe('When press', () => {
       expect(current).toHaveTextContent('0')
     });
   });
+  describe('Operator Button', () => {
+    it('+ Add the current to the previous', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '8' }))
+      expect(current).toHaveTextContent('8')
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      expect(previous).toHaveTextContent('8 +')
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent('6')
+    });
+    it('- Subtract the current from the previous', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '8' }))
+      expect(current).toHaveTextContent('8')
+      fireEvent.click(screen.getByRole('button', { name: '-' }))
+      expect(previous).toHaveTextContent('8 -')
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent('6')
+    });
+    it('* multiply the current by the previous', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '8' }))
+      expect(current).toHaveTextContent('8')
+      fireEvent.click(screen.getByRole('button', { name: '*' }))
+      expect(previous).toHaveTextContent('8 *')
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent('16')
+    });
+    it('÷ Divide the current by the previous', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '8' }))
+      expect(current).toHaveTextContent('8')
+      fireEvent.click(screen.getByRole('button', { name: '÷' }))
+      expect(previous).toHaveTextContent('8 ÷')
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent('4')
+    });
+  });
 });
