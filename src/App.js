@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="Calc">
       <div className="output">
-        {false ? (
+        {result ? (
           <div className="result" data-testid="result">
             {result}
           </div>
