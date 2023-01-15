@@ -56,5 +56,11 @@ describe('When press', () => {
       fireEvent.click(screen.getByText('2'))
       expect(current).toHaveTextContent('12')
     });
+    it('Print "0." when type "."', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      fireEvent.click(screen.getByText('.'))
+      expect(current).toHaveTextContent('0.')
+    });
   });
 });
