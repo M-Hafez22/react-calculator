@@ -279,6 +279,17 @@ describe('When press', () => {
       expect(current.innerHTML).toBe('')
       expect(previous.innerHTML).toBe('19 +')
     });
+    it('Clear the result from the console', () => {
+      render(<App />);
+      fireEvent.click(screen.getByRole('button', { name: '1' }))
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      fireEvent.click(screen.getByRole('button', { name: '9' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      fireEvent.click(screen.getByRole('button', { name: 'Del' }))
+      expect(result).toHaveTextContent('')
+
+    });
   });
 
 });
