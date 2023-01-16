@@ -24,6 +24,8 @@ export const reducer = (state, { type, payload }) => {
                 current: `${state.current || ""}${payload.digit}`,
                 result: null,
             }
+        case ACTIONS.CLEAR:
+            return {}
         case ACTIONS.CHOOSE_OPERATOR:
             if (state.current == null && state.previous == null && state.result == null) { return state }
             if (state.current == null && state.previous == null) {
