@@ -265,6 +265,20 @@ describe('When press', () => {
       expect(current.innerHTML).toBe('9')
       expect(previous.innerHTML).toBe('1 +')
     });
+
+    it('Do nothing when no current number', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '1' }))
+      fireEvent.click(screen.getByRole('button', { name: '9' }))
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      expect(current.innerHTML).toBe('')
+      expect(previous.innerHTML).toBe('19 +')
+      fireEvent.click(screen.getByRole('button', { name: 'Del' }))
+      expect(current.innerHTML).toBe('')
+      expect(previous.innerHTML).toBe('19 +')
+    });
   });
 
 });

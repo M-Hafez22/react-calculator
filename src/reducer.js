@@ -29,8 +29,8 @@ export const reducer = (state, { type, payload }) => {
         case ACTIONS.DELETE_DIGIT:
             // // if the console show a result clear the console
             // if (state.result) { return {} }
-            // // if the console show the previous value and the operator only 
-            // if (state.current == null) { return state }
+            // if the console show the previous value and the operator only 
+            if (state.current == null) { return state }
             return {
                 ...state,
                 current: state.current.slice(0, -1),
