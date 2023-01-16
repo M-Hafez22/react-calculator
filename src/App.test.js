@@ -83,6 +83,16 @@ describe('When press', () => {
       fireEvent.click(screen.getByRole('button', { name: '0' }))
       expect(current).toHaveTextContent('0')
     });
+    it('Start new operation', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      fireEvent.click(screen.getByRole('button', { name: '8' }))
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      expect(current).toHaveTextContent('2')
+    });
   });
   describe('Operator Button', () => {
     it('+ Add the current to the previous', () => {
@@ -192,5 +202,4 @@ describe('When press', () => {
       expect(previous).toHaveTextContent('')
     });
   });
-
 });
