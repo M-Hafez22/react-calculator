@@ -249,5 +249,22 @@ describe('When press', () => {
       expect(result).toHaveTextContent('')
     });
   });
+  describe('Delete', () => {
+    it('Delete the last digit from the current', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '1' }))
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      fireEvent.click(screen.getByRole('button', { name: '9' }))
+      fireEvent.click(screen.getByRole('button', { name: '9' }))
+      expect(current.innerHTML).toBe('99')
+      expect(previous).toHaveTextContent('1')
+      fireEvent.click(screen.getByRole('button', { name: 'Del' }))
+      expect(current.innerHTML).toBe('9')
+      expect(previous.innerHTML).toBe('1 +')
+    });
+  });
 
 });
