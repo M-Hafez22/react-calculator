@@ -137,7 +137,7 @@ describe('When press', () => {
       const result = screen.getByTestId('result')
       expect(result).toHaveTextContent('4')
     });
-    it('Do nothing when no current no pervoius no result', () => {
+    it('operatro Do nothing when no current no pervoius no result', () => {
       render(<App />);
       fireEvent.click(screen.getByRole('button', { name: '-' }))
       const current = screen.getByTestId('current')
@@ -181,4 +181,16 @@ describe('When press', () => {
       expect(result).toHaveTextContent('16')
     });
   });
+
+  describe('Evaluate Button', () => {
+    it('= Do nothing when no current no pervoius no result', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      expect(current).toHaveTextContent('')
+      expect(previous).toHaveTextContent('')
+    });
+  });
+
 });
