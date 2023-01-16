@@ -202,4 +202,35 @@ describe('When press', () => {
       expect(previous).toHaveTextContent('')
     });
   });
+  describe('AC button "clear"', () => {
+    it('AC Clear the Calculator console before evaluate', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '1' }))
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      fireEvent.click(screen.getByRole('button', { name: '9' }))
+      expect(current).toHaveTextContent('9')
+      expect(previous).toHaveTextContent('1')
+      fireEvent.click(screen.getByRole('button', { name: 'AC' }))
+      expect(current).toHaveTextContent('')
+      expect(previous).toHaveTextContent('')
+    });
+    it('AC Clear the Calculator console after evaluate', () => {
+      render(<App />);
+      const current = screen.getByTestId('current')
+      const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '1' }))
+      fireEvent.click(screen.getByRole('button', { name: '+' }))
+      fireEvent.click(screen.getByRole('button', { name: '9' }))
+      expect(current).toHaveTextContent('9')
+      expect(previous).toHaveTextContent('1')
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent('10')
+      fireEvent.click(screen.getByRole('button', { name: 'AC' }))
+      expect(result).toHaveTextContent('')
+    });
+  });
+
 });
