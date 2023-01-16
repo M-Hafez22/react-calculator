@@ -29,7 +29,7 @@ function App() {
       </div>
       <div className="numberpad">
         <button className="span-two" onClick={() => dispatch({ type: ACTIONS.CLEAR })}>AC</button>
-        <button>Del</button>
+        <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>Del</button>
         <OperatorButton operator="÷" dispatch={dispatch} />
         <DigitButton digit="1" dispatch={dispatch} />
         <DigitButton digit="2" dispatch={dispatch} />
