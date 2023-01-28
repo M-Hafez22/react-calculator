@@ -147,6 +147,19 @@ describe('When press', () => {
       const result = screen.getByTestId('result')
       expect(result).toHaveTextContent('4')
     });
+    it('÷ if the previous is zero print "Can not divide by zero"', () => {
+      render(<App />);
+      // const current = screen.getByTestId('current')
+      // const previous = screen.getByTestId('previous')
+      fireEvent.click(screen.getByRole('button', { name: '2' }))
+      // expect(current).toHaveTextContent('0')
+      fireEvent.click(screen.getByRole('button', { name: '÷' }))
+      // expect(previous).toHaveTextContent('8 ÷')
+      fireEvent.click(screen.getByRole('button', { name: '0' }))
+      fireEvent.click(screen.getByRole('button', { name: '=' }))
+      const result = screen.getByTestId('result')
+      expect(result).toHaveTextContent("Can't divide by zero")
+    });
     it('operatro Do nothing when no current no pervoius no result', () => {
       render(<App />);
       fireEvent.click(screen.getByRole('button', { name: '-' }))
