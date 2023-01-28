@@ -12,12 +12,12 @@ export const reducer = (state, { type, payload }) => {
             // Prevent showing multiple 0
             if (payload.digit === "0" && state.current === "0") { return state }
             // Print "0." when type "."
-            if (payload.digit === "." && state.current === undefined) { return { ...state, current: "0." } }
+            if (payload.digit === "." && (state.current === undefined || state.current === null)) { return { ...state, current: "0." } }
             // Prevent showing multiple "."
             if (
                 payload.digit === "." &&
-                state.current.includes(".") &&
-                state.current.lenght !== 0
+                state.current?.includes(".") &&
+                state.current?.lenght !== 0
             ) { return state }
             return {
                 ...state,
