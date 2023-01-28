@@ -61,6 +61,15 @@ export const reducer = (state, { type, payload }) => {
                 current: null,
             }
         case ACTIONS.EVALUATE:
+            if (state.current == 0) {
+                return {
+                    ...state,
+                    current: null,
+                    previous: null,
+                    operator: null,
+                    result: "Can't divide by zero",
+                }
+            }
             if (
                 state.current == null ||
                 state.previous == null ||
