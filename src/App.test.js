@@ -147,7 +147,7 @@ describe('When press', () => {
       const result = screen.getByTestId('result')
       expect(result).toHaveTextContent('4')
     });
-    it('÷ if the previous is zero print "Can not divide by zero"', () => {
+    it('÷ if dividing by zero print "Can not divide by zero"', () => {
       render(<App />);
       // const current = screen.getByTestId('current')
       // const previous = screen.getByTestId('previous')
