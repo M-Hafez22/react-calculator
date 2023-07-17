@@ -61,7 +61,7 @@ export const reducer = (state, { type, payload }) => {
                 current: null,
             }
         case ACTIONS.EVALUATE:
-            if (state.current == 0) {
+            if (state.current == 0 && state.operator == "÷") {
                 return {
                     ...state,
                     current: null,
